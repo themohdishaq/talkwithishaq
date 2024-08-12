@@ -2,40 +2,63 @@
 import React from "react";
 import Image from "next/image";
 import { twMerge } from "tailwind-merge";
+import { MaskContainer } from "./ui/svg-mask-effect";
 
 import { TracingBeam } from "./ui/tracing-beam";
 import { inter } from '@/fonts/font'; // Make sure this path is correct
+import { GlobeDemo } from "./globe";
+import { NameLogo } from "./NameLogo";
 
 export function HomePage() {
   return (
-    <div className="max-w-7xl mx-auto">
-    <TracingBeam className="px-6">
-      <div className="max-w-full mx-auto antialiased pt-4 relative">
-        {dummyContent.map((item, index) => (
-          <div key={`content-${index}`} className="mb-10">
-            <h2 className="bg-black text-white rounded-full text-sm w-fit px-4 py-1 mb-4">
-              {item.badge}
-            </h2>
 
-            <p className={twMerge(inter.className, "text-xl mb-4")}>
-              {item.title}
-            </p>
-
-            <div className="text-sm prose prose-sm dark:prose-invert">
-              {item?.image && (
-                <Image
-                  src={item.image}
-                  alt="blog thumbnail"
-                  height="1000"
-                  width="1000"
-                  className="rounded-lg mb-10 object-cover"
-                />
-              )}
-              {item.description}
-            </div>
-          </div>
-        ))}
+    <div className="w-full h-max bg-slate-950">
+    <TracingBeam className="max-w-7xl mx-auto sm:px-6">
+      <div className="max-w-full mx-auto antialiased sm:pt-4 relative grid sm:grid-cols-2">
+        <div>
+            <NameLogo/>
+        </div>
+        <div>
+        <GlobeDemo/>
+        </div>
       </div>
+      <div className="grid sm:grid-cols-2 gap-4 p-4">
+  <div className="flex flex-col justify-center">
+
+
+    <div className="h-[40rem] w-full flex items-center justify-center  overflow-hidden">
+      <MaskContainer
+        revealText={
+            <div className="flex flex-col justify-center items-center p-6">
+            <h1 className="text-gray-400 text-2xl font-semibold uppercase mb-4">Who Am I?</h1>
+            <p className="max-w-4xl mx-auto text-slate-300 text-center text-lg font-medium">
+              Hover to me to get about Muhammad Ishaq
+            </p>
+          </div>
+          
+        }
+        className="h-[40rem] "
+      >
+        <p className="text-sm leading-10 px-5 flex-wrap text-white bg-transparent">
+        My name is Muhammad Ishaq, and I come from the picturesque valley of Choarbat in the <span className="text-red-500">Siachen Sector</span>, District Ghanche, Gilgit-Baltistan, Pakistan. I completed my matriculation in Skardu before moving to Rawalpindi for my FSc at Punjab Group of Colleges. Currently, I am pursuing my studies at the National University of Sciences and Technology <span className="text-red-500">NUST</span>, Islamabad, in the School of Electrical Engineering and Computer Science (SEECS).
+        I am a dedicated professional with a passion for working on end-to-end products. My goal is to develop sustainable and scalable systems that drive meaningful social and technical impact. My journey reflects a commitment to leveraging my skills and knowledge to create innovative solutions that address real-world challenges.
+        </p>
+      </MaskContainer>
+    </div>
+
+
+  </div>
+  <div className="flex items-center justify-center">
+    <Image
+      src={'/feelingProud.svg'}
+      alt="man"
+      height={500}
+      width={500} 
+      className="object-cover"
+    />
+  </div>
+</div>
+
     </TracingBeam>
     </div>
   );

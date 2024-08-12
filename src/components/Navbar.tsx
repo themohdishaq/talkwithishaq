@@ -1,14 +1,15 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import Link from 'next/link'
 
 const navigation = [
-  { name: 'Home', href: '#', current: true },
-  { name: 'Education', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Contact', href: '#', current: false },
-  { name: 'Skills', href: '#', current: false},
-  { name: 'Certifiate', href: '#', current: false},
-  { name: 'Achievement', href: '#', current: false}
+  { name: 'Home', href: '/', current: true },
+  { name: 'Education', href: 'education', current: false },
+  { name: 'Projects', href: 'projects', current: false },
+  { name: 'Contact', href: 'contact', current: false },
+  { name: 'Skills', href: 'skills', current: false},
+  { name: 'Certifiate', href: 'certificate', current: false},
+  { name: 'Achievement', href: 'achievement', current: false}
 ]
 
 function classNames(...classes: any[]):string {
@@ -34,7 +35,7 @@ export default function Navbar() {
             <div className="hidden sm:block">
               <div className="flex space-x-2">
                 {navigation.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
                     aria-current={item.current ? 'page' : undefined}
@@ -44,7 +45,7 @@ export default function Navbar() {
                     )}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
